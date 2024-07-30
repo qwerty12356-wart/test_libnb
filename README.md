@@ -12,7 +12,7 @@ houdini11_38765z (waydroid_script houdini version)
 # Build
 1. Download android NDK, extract it and either export ANDROID_NDK_HOME to point to the extracted NDK, or add ``-DANDROID_NDK_HOME=(YOUR NDK PATH HERE)`` to the cmake command.
 2. run ``cmake . -B build`` (Add more commands after this if you wish).
-3. ``cd build``, ``make``.\
+3. ``cd build``, ``make``.
 
 Available build options:\
 COMPILE_ARCH: Set compile architecture (x86_64 (default), or x86).\
@@ -21,7 +21,7 @@ NATIVEBRIDGE: Set native bridge to use (default: houdini).\
 NB_VERSION: Set version of native bridge that is being used (default: 38765).\
 LOG_DEBUG: Enable debug logging (default: OFF).\
 SKIP_READABLE_CHECK: Skip the ``is_readable`` check when patching (default: ON).\
-SKIP_NB_ENABLED_CHECK: Skip ``is_native_bridge_enabled`` check (default: OFF).\
+SKIP_NB_ENABLED_CHECK: Skip ``is_native_bridge_enabled`` check (default: OFF).
 
 
 

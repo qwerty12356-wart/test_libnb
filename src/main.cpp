@@ -235,6 +235,6 @@ NativeBridgeCallbacks NativeBridgeItf = {
     .getTrampolineForFunctionPointer = native_bridge6_getTrampolineForFunctionPointer,
 
     };
-static_assert(sizeof(uint32_t)==4);
+
 }
 }
