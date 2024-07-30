@@ -13,7 +13,7 @@
 #endif
 //Must define size of NB in bytes.
 //NOTE: DO NOT set this number too high, because you may accidentally mark
-//Houdini memory as unreadable
+//Houdini memory as read-only
 extern unsigned int sizeofNB;
 
 void Patch_NB(void* nbbase,const android::NativeBridgeRuntimeCallbacks *art_cbs,const char *app_code_cache_dir,const char *isa);
