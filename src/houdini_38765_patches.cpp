@@ -201,7 +201,7 @@ void call_constructor_func_hook_stub(){
 
 void Patch_call_constructor(void* nbbase){
     int res = 0;
-    #ifdef IS32BIT
+    #ifdef IS_32
     
     #else
        res |= PatchHex_8(nbbase, 0x363b60, 0x55, 0xe8); //CALL
