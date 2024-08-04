@@ -20,7 +20,7 @@ set(NATIVEBRIDGE houdini)
 endif()
 
 if (NOT DEFINED NB_VERSION)
-set(NB_VERSION 38765)
+set(NB_VERSION 11_38765)
 endif()
 
 
@@ -31,6 +31,11 @@ endif()
 option(LOG_DEBUG "Enable debug logging" OFF)
 option(SKIP_READABLE_CHECK "Skip the memory readable check" ON)
 option(SKIP_NB_ENABLED_CHECK "Skip the native_bridge enabled check, native bridge will always run" ON)
+option(ENABLE_EXPERIMENTAL_PATCHES "Enable experimental patches (Not recommended)" OFF)
+
+if(ENABLE_EXPERIMENTAL_PATCHES)
+add_compile_definitions(ENABLE_EXPERIMENTAL_PATCHES)
+endif()
 
 if(LOG_DEBUG)
 add_compile_definitions(LOG_DEBUG)
