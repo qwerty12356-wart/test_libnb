@@ -17,7 +17,7 @@ houdini12_38818 (in beta)
 
 Available build options:\
 COMPILE_ARCH: Set compile architecture (x86_64 (default), or x86).\
-ANDROID_NDK_HOME: Set android NDK path.
+ANDROID_NDK_HOME: Set android NDK path. \
 NATIVEBRIDGE: Set native bridge to use (default: houdini).\
 NB_VERSION: Set version of native bridge that is being used (default: 11_38765).\
 LOG_DEBUG: Enable debug logging (default: OFF).\
