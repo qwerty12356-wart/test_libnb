@@ -1,5 +1,0 @@
-/home/hein/Downloads/test_libnb/build_x86/CMakeFiles/edit_cache.dir
-/home/hein/Downloads/test_libnb/build_x86/CMakeFiles/rebuild_cache.dir
-/home/hein/Downloads/test_libnb/build_x86/src/CMakeFiles/nb.dir
-/home/hein/Downloads/test_libnb/build_x86/src/CMakeFiles/edit_cache.dir
-/home/hein/Downloads/test_libnb/build_x86/src/CMakeFiles/rebuild_cache.dir
