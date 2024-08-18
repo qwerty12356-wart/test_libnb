@@ -2,7 +2,8 @@
 A custom libnb that patch native bridges in memory to fix some game compatibility
 
 # Supported native bridges:
-houdini11_38765z (waydroid_script houdini version)
+houdini11_38765 (waydroid_script houdini version)
+houdini12_38818 (in beta)
 
 # How to use:
 1. Build libnb from source (See Build)
@@ -18,7 +19,7 @@ Available build options:\
 COMPILE_ARCH: Set compile architecture (x86_64 (default), or x86).\
 ANDROID_NDK_HOME: Set android NDK path.
 NATIVEBRIDGE: Set native bridge to use (default: houdini).\
-NB_VERSION: Set version of native bridge that is being used (default: 38765).\
+NB_VERSION: Set version of native bridge that is being used (default: 11_38765).\
 LOG_DEBUG: Enable debug logging (default: OFF).\
 SKIP_READABLE_CHECK: Skip the ``is_readable`` check when patching (default: ON).\
 SKIP_NB_ENABLED_CHECK: Skip ``is_native_bridge_enabled`` check (default: OFF). \
