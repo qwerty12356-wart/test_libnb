@@ -21,7 +21,8 @@ NATIVEBRIDGE: Set native bridge to use (default: houdini).\
 NB_VERSION: Set version of native bridge that is being used (default: 38765).\
 LOG_DEBUG: Enable debug logging (default: OFF).\
 SKIP_READABLE_CHECK: Skip the ``is_readable`` check when patching (default: ON).\
-SKIP_NB_ENABLED_CHECK: Skip ``is_native_bridge_enabled`` check (default: OFF).
+SKIP_NB_ENABLED_CHECK: Skip ``is_native_bridge_enabled`` check (default: OFF). \
+ENABLE_EXPERIMENTAL_PATCHES: enable experimental patches (duh, default: OFF).
 
 
 

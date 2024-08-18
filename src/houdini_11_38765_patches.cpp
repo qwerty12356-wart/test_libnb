@@ -215,11 +215,28 @@ void Patch_call_constructor(void* nbbase){
     }
 }
 
+void Patch_exp_01(void* nbbase){
+    int res = 0;
+    #ifdef IS_32
+
+    #else
+        PatchHex_16(nbbase, 0x2f7877, 0x940f, 0x01b1);
+        PatchHex_8(nbbase, 0x2f7879, 0xc1, 0x90);
+    #endif
+    if (res){
+        error_print("Patch_exp_01 failed.");
+    }
+}
 
 
 void Patch_NB(void* nbbase,const android::NativeBridgeRuntimeCallbacks *art_cbs,const char *app_code_cache_dir,const char *isa){
     Patch_Permissive_pkey_mprotect(nbbase);
     Patch_Permissive_mmap(nbbase);
+    #ifdef ENABLE_EXPERIMENTAL_PATCHES
+    Patch_exp_01(nbbase);
+    #endif
+
+
     const char* dofound = strstr(app_code_cache_dir, "com.nexon.bluearchive");
     if (dofound){
         Patch_Performance_pkey_mprotect(nbbase);

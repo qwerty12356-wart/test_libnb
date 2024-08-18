@@ -162,7 +162,7 @@ void Patch_android_dlopen_ext_internal(void* nbbase){
 void Patch_call_constructor(void* nbbase){
     int res = 0;
     #ifdef IS_32
-
+    
     #else
     res |= PatchHex_8(nbbase, 0x331f60, 0x55, 0xe8);
     res |= PatchHex_32(nbbase, 0x331f61, 0x10EC8148, (char*)call_constructor_func_hook_stub-((char*)nbbase+0x331f61));
@@ -236,7 +236,7 @@ void Patch_Performance_Pkey_Mprotect(void* nbbase){
     }
 }
 
-void Patch_exp_Performance_Unlock(void* nbbase){
+void Patch_exp_01(void* nbbase){
     int res = 0;
     #ifdef IS_32
 
@@ -245,7 +245,7 @@ void Patch_exp_Performance_Unlock(void* nbbase){
         PatchHex_8(nbbase, 0x2e5e79, 0xc1, 0x90);
     #endif
     if (res){
-        error_print("Patch_exp_Performance_Unlock failed.");
+        error_print("Patch_exp_01 failed.");
     }
 }
 
@@ -256,7 +256,7 @@ void Patch_NB(void* nbbase,const android::NativeBridgeRuntimeCallbacks *art_cbs,
     Patch_Permissive_Mmap(nbbase);
     #ifdef ENABLE_EXPERIMENTAL_PATCHES
         Patch_Linker_Namespace(nbbase);
-        Patch_exp_Performance_Unlock(nbbase);
+        Patch_exp_01(nbbase);
     #endif
     const char* dofound = strstr(app_code_cache_dir, "com.nexon.bluearchive");
     if (dofound){
