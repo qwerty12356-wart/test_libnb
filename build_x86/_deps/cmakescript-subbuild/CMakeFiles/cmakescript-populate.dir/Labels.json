@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/CMakeFiles/cmakescript-populate"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/CMakeFiles/cmakescript-populate.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/CMakeFiles/cmakescript-populate-complete.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-build.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-configure.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-download.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-install.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-patch.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-test.rule"
+		},
+		{
+			"file" : "/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/cmakescript-populate-prefix/src/cmakescript-populate-stamp/cmakescript-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"cmakescript-populate"
+		],
+		"name" : "cmakescript-populate"
+	}
+}

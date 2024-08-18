@@ -1,0 +1,3 @@
+/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/CMakeFiles/cmakescript-populate.dir
+/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/CMakeFiles/edit_cache.dir
+/home/hein/Downloads/test_libnb/build_x86/_deps/cmakescript-subbuild/CMakeFiles/rebuild_cache.dir

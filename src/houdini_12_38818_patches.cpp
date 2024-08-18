@@ -152,7 +152,7 @@ void Patch_android_dlopen_ext_internal(void* nbbase){
     #else
     res |= PatchHex_8(nbbase, 0x32f880, 0x41, 0xe8);
     res |= PatchHex_32(nbbase, 0x32f881, 0x41554154, (char*)android_dlopen_ext_internal_hook_stub-((char*)nbbase+0x32f881));
-    res |= PatchHex_8(nbbase, 0x32f885, 0x57, 0x90);
+    res |= PatchHex_8(nbbase, 0x32f885, 0x56, 0x90);
     #endif
     if (res){
         error_print("Patch_android_dlopen_ext_internal failed.");

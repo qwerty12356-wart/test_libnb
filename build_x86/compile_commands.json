@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/hein/Downloads/test_libnb/build_x86/src",
+  "command": "/home/hein/Downloads/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=i686-none-linux-android30 --sysroot=/home/hein/Downloads/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DSKIP_NB_ENABLED_CHECK -DSKIP_READABLE_CHECK -DUSE_NATIVEBRIDGE=\\\"houdini\\\" -Dnb_EXPORTS -I/home/hein/Downloads/test_libnb/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++20 -fPIC -o CMakeFiles/nb.dir/main.cpp.o -c /home/hein/Downloads/test_libnb/src/main.cpp",
+  "file": "/home/hein/Downloads/test_libnb/src/main.cpp",
+  "output": "src/CMakeFiles/nb.dir/main.cpp.o"
+},
+{
+  "directory": "/home/hein/Downloads/test_libnb/build_x86/src",
+  "command": "/home/hein/Downloads/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=i686-none-linux-android30 --sysroot=/home/hein/Downloads/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DSKIP_NB_ENABLED_CHECK -DSKIP_READABLE_CHECK -DUSE_NATIVEBRIDGE=\\\"houdini\\\" -Dnb_EXPORTS -I/home/hein/Downloads/test_libnb/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++20 -fPIC -o CMakeFiles/nb.dir/houdini_12_38818_patches.cpp.o -c /home/hein/Downloads/test_libnb/src/houdini_12_38818_patches.cpp",
+  "file": "/home/hein/Downloads/test_libnb/src/houdini_12_38818_patches.cpp",
+  "output": "src/CMakeFiles/nb.dir/houdini_12_38818_patches.cpp.o"
+}
+]
