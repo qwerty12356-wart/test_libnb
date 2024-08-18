@@ -2,7 +2,7 @@
 A custom libnb that patch native bridges in memory to fix some game compatibility
 
 # Supported native bridges:
-houdini11_38765 (waydroid_script houdini version)
+houdini11_38765 (waydroid_script houdini version).\
 houdini12_38818 (in beta)
 
 # How to use:
