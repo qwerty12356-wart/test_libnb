@@ -96,7 +96,7 @@ namespace android {
     }
 
     static void *native_bridge2_getTrampoline(void *handle, const char *name, const char* shorty, uint32_t len){
-        debug_print("Entering native_bridge2_getTrampoline name: %s, shorty: %s, len : %lu", name, shorty, len);
+        debug_print("Entering native_bridge2_getTrampoline name: %s, shorty: %s, len : %u", name, shorty, len);
         NativeBridgeCallbacks *cb = get_callbacks();
         return cb ? cb->getTrampoline(handle, name, shorty, len) : nullptr;
     }
@@ -113,7 +113,7 @@ namespace android {
     static bool native_bridge2_isCompatibleWith(uint32_t version)
     {
         static uint32_t my_version = 0;
-        debug_print("Entering native_bridge2_isCompatibleWith, version: %lu", version);
+        debug_print("Entering native_bridge2_isCompatibleWith, version: %u", version);
         if (my_version == 0 && is_native_bridge_enabled()) {
             if (NativeBridgeCallbacks *cb = get_callbacks()) {
             my_version = cb->version;
@@ -156,7 +156,7 @@ namespace android {
     static native_bridge_namespace_t *
     native_bridge3_createNamespace(const char *name,const char *ld_library_path,const char *default_library_path,uint64_t type,const char *permitted_when_isolated_path,native_bridge_namespace_t *parent_ns)
     {
-        debug_print("Entering native_bridge3_createNamespace, name: %s, ld_library_path: %s, default_library_path: %s, type: %llu, permitted_when_isolated_path: %s", name, ld_library_path, default_library_path, type,permitted_when_isolated_path);
+        debug_print("Entering native_bridge3_createNamespace, name: %s, ld_library_path: %s, default_library_path: %s, type: %lu, permitted_when_isolated_path: %s", name, ld_library_path, default_library_path, type,permitted_when_isolated_path);
         NativeBridgeCallbacks *cb = get_callbacks();
         return cb ? cb->createNamespace(name, ld_library_path, default_library_path, type, permitted_when_isolated_path, parent_ns) : nullptr;
     }
@@ -189,12 +189,12 @@ namespace android {
         cb->preZygoteFork();
     }
     static void* native_bridge6_getTrampolineWithJNICallType(void* handle,const char* name,const char* shorty,uint32_t len,enum JNICallType jni_call_type){
-        debug_print("Entering native_bridge6_getTrampolineWithJNICallType, handle: %p, name: %s, shorty: %s, len: %lu", handle, name, shorty, len);
+        debug_print("Entering native_bridge6_getTrampolineWithJNICallType, handle: %p, name: %s, shorty: %s, len: %u", handle, name, shorty, len);
         NativeBridgeCallbacks* cb = get_callbacks();
         return cb ? cb->getTrampolineWithJNICallType(handle, name, shorty, len, jni_call_type) : nullptr;
     }
     static void* native_bridge6_getTrampolineForFunctionPointer(const void* method,const char* shorty,uint32_t len,enum JNICallType jni_call_type){
-        debug_print("Entering native_bridge6_getTrampolineForFunctionPointer, method: %p, shorty: %s, len: %lu", method, shorty, len);
+        debug_print("Entering native_bridge6_getTrampolineForFunctionPointer, method: %p, shorty: %s, len: %u", method, shorty, len);
         NativeBridgeCallbacks* cb = get_callbacks();
         return cb ? cb->getTrampolineForFunctionPointer(method, shorty, len, jni_call_type) : nullptr;
     }
