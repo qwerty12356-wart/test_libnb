@@ -17,6 +17,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
+#include <cstring>
 #include <nativebridge.h>
 #include <dlfcn.h>
 #include <log.h>
@@ -79,7 +80,17 @@ namespace android {
                 if (dlinf.dli_fbase){
                     initPatches(dlinf.dli_fbase, art_cbs, app_code_cache_dir, isa);
                 }
-                return nbcb->initialize(art_cbs, app_code_cache_dir, isa);
+                const char* fake_isa = isa;
+                #ifdef ENABLE_EXPERIMENTAL_PATCHES
+                if (strcmp(app_code_cache_dir, "./code_cache") == 0){
+                    #ifdef IS_32
+                        fake_isa = "arm";
+                    #else
+                        fake_isa = "arm64";
+                    #endif
+                }
+                #endif
+                return nbcb->initialize(art_cbs, app_code_cache_dir, fake_isa);
             }
         }
         else{
