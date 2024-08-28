@@ -29,6 +29,7 @@
 #endif
 
 namespace android {
+    static bool isFakingISA = false;
     static void *native_handle = nullptr;
     static NativeBridgeCallbacks *callbacks = nullptr;
     static bool is_native_bridge_enabled()
@@ -83,6 +84,7 @@ namespace android {
                 const char* fake_isa = isa;
                 #ifdef ENABLE_EXPERIMENTAL_PATCHES
                 if (strcmp(app_code_cache_dir, "./code_cache") == 0){
+                    isFakingISA = true;
                     #ifdef IS_32
                         fake_isa = "arm";
                     #else
@@ -117,9 +119,10 @@ namespace android {
         return cb ? cb->isSupported(libpath) : false;
     }
     static const struct NativeBridgeRuntimeValues *native_bridge2_getAppEnv(const char *abi){
-         debug_print("Entering native_bridge2_getAppEnv, abi: %s", abi);
-         NativeBridgeCallbacks *cb = get_callbacks();
-        return cb ? cb->getAppEnv(abi) : nullptr;
+        debug_print("Entering native_bridge2_getAppEnv, abi: %s", abi);
+        NativeBridgeCallbacks *cb = get_callbacks();
+        const char* fake_isa = abi;
+        return cb ? cb->getAppEnv(fake_isa) : nullptr;
     }
     static bool native_bridge2_isCompatibleWith(uint32_t version)
     {
@@ -156,7 +159,15 @@ namespace android {
     {
         debug_print("Entering native_bridge3_isPathSupported, path: %s", path);
         NativeBridgeCallbacks *cb = get_callbacks();
-        return cb && cb->isPathSupported(path);
+        bool CheckingVariable = cb && cb->isPathSupported(path);
+        if (!CheckingVariable){
+            debug_print("Path is not supported.");
+            if (isFakingISA){
+                debug_print("Now faking supported Path...");
+                return true;
+            }
+        }
+        return CheckingVariable;
     }
     static bool native_bridge3_initAnonymousNamespace(const char *public_ns_sonames,const char *anon_ns_library_path)
     {
