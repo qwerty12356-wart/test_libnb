@@ -95,6 +95,11 @@ void Patch_NB(void* nbbase,const android::NativeBridgeRuntimeCallbacks *art_cbs,
     #endif
     Patch_Permissive_Pkey_Mprotect(nbbase);
     Patch_Permissive_Mmap(nbbase);
+
+    if (!app_code_cache_dir){
+        return;
+    }
+
     const char* dofound = strstr(app_code_cache_dir, "com.nexon.bluearchive");
     if (dofound){
        Patch_Performance_Pkey_Mprotect(nbbase);

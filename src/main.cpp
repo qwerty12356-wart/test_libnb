@@ -24,6 +24,7 @@
 #include <sys/system_properties.h>
 #include "patches.h"
 
+
 #ifndef USE_NATIVEBRIDGE
 #define USE_NATIVEBRIDGE "houdini"
 #endif
@@ -65,6 +66,7 @@ namespace android {
                 return nullptr;
             }
         }
+        
         callbacks = reinterpret_cast<NativeBridgeCallbacks *>(dlsym(native_handle, "NativeBridgeItf"));
         __android_log_print(ANDROID_LOG_INFO,"libnb_custom" , libnb, callbacks ? callbacks->version : 0);
       }
