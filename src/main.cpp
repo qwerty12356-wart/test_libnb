@@ -84,16 +84,6 @@ namespace android {
                     initPatches(dlinf.dli_fbase, art_cbs, app_code_cache_dir, isa);
                 }
                 const char* fake_isa = isa;
-                #ifdef ENABLE_EXPERIMENTAL_PATCHES
-                if (strcmp(app_code_cache_dir, "./code_cache") == 0){
-                    isFakingISA = true;
-                    #ifdef IS_32
-                        fake_isa = "arm";
-                    #else
-                        fake_isa = "arm64";
-                    #endif
-                }
-                #endif
                 return nbcb->initialize(art_cbs, app_code_cache_dir, fake_isa);
             }
         }
