@@ -3,7 +3,11 @@
 #include <nbtools/patchHex.h>
 #include <log.h>
 
+#ifdef IS_32
+unsigned int sizeofNB = 5* 1024*1024
+#else
 unsigned int sizeofNB = 6*1024*1024;
+#endif
 
 void Patch_Permissive_pkey_mprotect(void* nbbase){
     int res = 0;
