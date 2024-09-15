@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <cstring>
 #include <patches.h>
 #include <nbtools/patchHex.h>
@@ -233,6 +234,106 @@ void Patch_exp_01(void* nbbase){
 }
 
 
+//Backported from mumu, idk what RDI contains
+extern "C"
+char* internal_dladdr_hook_func(char* whatisthis){
+    if (whatisthis){
+        debug_print("internal_dladdr_hook RDI value: %s", whatisthis);
+        char* result = strchr(whatisthis, '/');
+        if (!result){
+            result = whatisthis;
+        }
+        return result+1;
+    }
+    return NULL;
+}
+
+
+
+__attribute__((naked))
+void internal_dladdr_hook_stub(){
+      #ifdef IS_32
+
+    #else
+    __asm__ volatile(
+        ".intel_syntax\n"
+        "MOV RAX, qword ptr [RSI + 0x1a0]\n"
+        "PUSH rbx\n"
+        "PUSH rcx\n"
+        "PUSH rdx\n"
+        "PUSH rsi\n"
+        "PUSH rdi\n"
+        "PUSH R8\n"
+        "PUSH R9\n"
+        "PUSH R10\n"
+        "PUSH R11\n"
+        "PUSH R12\n"
+        "PUSH R13\n"
+        "PUSH R14\n"
+        "PUSH R15\n"
+        "MOV RDI, RAX\n"
+        "CALL internal_dladdr_hook_func\n"
+        "POP R15\n"
+        "POP R14\n"
+        "POP R13\n"
+        "POP R12\n"
+        "POP R11\n"
+        "POP R10\n"
+        "POP R9\n"
+        "POP R8\n"
+        "POP rdi\n"
+        "POP rsi\n"
+        "POP rdx\n"
+        "POP rcx\n"
+        "POP rbx\n"
+        "RET \n"
+    );
+    #endif
+}
+
+
+
+void Patch_internal_dladdr(void* nbbase){
+    int res = 0;
+    #ifdef IS_32
+
+    #else
+    res |= PatchHex_8(nbbase, 0x3686f9, 0x48, 0xe8);
+    res |= PatchHex_32(nbbase, 0x3686fa, 0x01A0868B, (uint32_t)((char*)internal_dladdr_hook_stub - ((char*)nbbase + 0x3686fe)));
+    res |= PatchHex_8(nbbase, 0x3686fe, 0x0, 0x90);
+    res |= PatchHex_8(nbbase, 0x3686ff, 0x0, 0x90);
+    #endif
+    if (res){
+        error_print("Patch_internal_dladdr failed");
+    }
+}
+
+void Patch_Permissive_pkey_Mprotect2(void* nbbase){
+    int res = 0;
+    #ifdef IS_32
+
+    #else
+    res |= PatchHex_8(nbbase, 0x306552, 0xfb, 0xff);
+    #endif
+    if (res){
+        error_print("Patch_Permissive_pkey_Mprotect2 failed.");
+    }
+}
+
+void Patch_Permissive_mprotect(void* nbbase){
+    int res = 0;
+    #ifdef IS_32
+
+    #else
+    res |= PatchHex_8(nbbase, 0x30647a, 0xfb, 0xff);
+    #endif
+    if (res){
+        error_print("Patch_Permissive_mprotect failed.");
+    }
+
+}
+
+
 void Patch_NB(void* nbbase,const android::NativeBridgeRuntimeCallbacks *art_cbs,const char *app_code_cache_dir,const char *isa){
     Patch_Permissive_pkey_mprotect(nbbase);
     Patch_Permissive_mmap(nbbase);
@@ -252,4 +353,14 @@ void Patch_NB(void* nbbase,const android::NativeBridgeRuntimeCallbacks *art_cbs,
         Patch_android_dlopen_ext_internal(nbbase);
         Patch_call_constructor(nbbase);
     }
+    //No command line for this. Must be enabled by modifying the source.
+    //As you can see, this patch is for supercell games, but since it doesnt works, it is junk.
+    #ifdef ENABLE_JUNK_PATCHES
+    dofound = strstr(app_code_cache_dir, ".supercell.");
+    if (dofound){
+        Patch_internal_dladdr(nbbase);
+        Patch_Permissive_mprotect(nbbase);
+        Patch_Permissive_pkey_Mprotect2(nbbase);
+    }
+    #endif
 }
