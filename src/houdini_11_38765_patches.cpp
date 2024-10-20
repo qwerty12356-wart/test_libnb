@@ -5,7 +5,7 @@
 #include <log.h>
 
 #ifdef IS_32
-unsigned int sizeofNB = 5* 1024*1024
+unsigned int sizeofNB = 5* 1024*1024;
 #else
 unsigned int sizeofNB = 6*1024*1024;
 #endif
@@ -257,7 +257,7 @@ void internal_dladdr_hook_stub(){
     #else
     __asm__ volatile(
         ".intel_syntax\n"
-        "MOV RAX, qword ptr [RSI + 0x1a0]\n"
+        "MOV RAX, qword ptr [RSI + 0x198]\n"
         "PUSH rbx\n"
         "PUSH rcx\n"
         "PUSH rdx\n"
@@ -271,8 +271,8 @@ void internal_dladdr_hook_stub(){
         "PUSH R13\n"
         "PUSH R14\n"
         "PUSH R15\n"
-        "MOV RDI, RAX\n"
-        "CALL internal_dladdr_hook_func\n"
+        //"MOV RDI, RAX\n"
+        //"CALL internal_dladdr_hook_func\n"
         "POP R15\n"
         "POP R14\n"
         "POP R13\n"
@@ -307,6 +307,7 @@ void Patch_internal_dladdr(void* nbbase){
         error_print("Patch_internal_dladdr failed");
     }
 }
+
 
 void Patch_Permissive_pkey_Mprotect2(void* nbbase){
     int res = 0;
@@ -355,12 +356,11 @@ void Patch_NB(void* nbbase,const android::NativeBridgeRuntimeCallbacks *art_cbs,
     }
     //No command line for this. Must be enabled by modifying the source.
     //As you can see, this patch is for supercell games, but since it doesnt works, it is junk.
-    #ifdef ENABLE_JUNK_PATCHES
+    
     dofound = strstr(app_code_cache_dir, ".supercell.");
     if (dofound){
         Patch_internal_dladdr(nbbase);
         Patch_Permissive_mprotect(nbbase);
         Patch_Permissive_pkey_Mprotect2(nbbase);
     }
-    #endif
 }
